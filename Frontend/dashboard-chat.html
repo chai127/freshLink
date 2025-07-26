@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat Dashboard – StreetSupply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+ <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config (Custom Colors) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#24732b',
+            'primary-dark': '#1d5a22',
+             'primary-light': '#4CAF50', // <- lighter green
+            accent: '#f59e0b',
+            'accent-dark': '#b45309',
+            'neutral-light': '#f3f4f6',
+            neutral: '#6b7280',
+            'neutral-dark': '#374151',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+   body {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-optical-sizing: auto;
+    }
+  </style>
+</head>
+<body  class="bg-neutral-light text-neutral-dark flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-primary">StreetSupply</h1>
+      <nav class="space-x-6 text-sm text-primary">
+        <a href="dashboard-hawker.html" class="hover:text-accent transition">Dashboard</a>
+        <a href="cart.html" class="hover:text-accent transition">🛒 Cart</a>
+      </nav>
+    </div>
+  </header>
+<div id="page-content" class="flex-grow">
+  <main class="max-w-4xl mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-8 text-primary">Chat Dashboard</h2>
+
+    <!-- Conversations List -->
+    <div class="space-y-6">
+      
+      <a href="/chat-window.html?vendor=freshmart" 
+         class="group flex items-center justify-between bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition relative">
+        
+        <div class="flex items-center space-x-4">
+          <!-- Avatar placeholder -->
+          <div class="flex-shrink-0 w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xl select-none">
+            FM
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-primary group-hover:text-accent transition">FreshMart</h3>
+            <p class="text-gray-600 text-sm mt-1 truncate max-w-xs">
+              “We'll send onions by 4pm...”
+            </p>
+          </div>
+        </div>
+        
+        <span class="text-xs text-gray-400 min-w-[40px] text-right select-none">2m ago</span>
+      </a>
+
+      <a href="/chat-window.html?vendor=spicehub" 
+         class="group flex items-center justify-between bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition relative">
+        
+        <div class="flex items-center space-x-4">
+          <!-- Avatar placeholder -->
+          <div class="flex-shrink-0 w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xl select-none">
+            SH
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-primary group-hover:text-accent transition">SpiceHub Co.</h3>
+            <p class="text-gray-600 text-sm mt-1 truncate max-w-xs">
+              “Okay with ₹80/kg if you take 10kg.”
+            </p>
+          </div>
+        </div>
+        
+        <span class="text-xs text-gray-400 min-w-[40px] text-right select-none">1h ago</span>
+      </a>
+
+      <!-- Add more chat items similarly -->
+
+    </div>
+  </main>
+</div>
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div class="mb-4 md:mb-0">
+        <h4 class="text-lg font-semibold">StreetSupply</h4>
+        <p class="text-sm text-gray-400">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-4 text-sm" id="contact">
+        <a href="#" class="hover:text-accent">Privacy Policy</a>
+        <a href="#" class="hover:text-accent">Contact</a>
+        <a href="#" class="hover:text-accent">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

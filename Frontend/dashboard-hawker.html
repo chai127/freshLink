@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hawker Dashboard – StreetSupply</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config (Custom Colors) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#24732b',
+            'primary-dark': '#1d5a22',
+             'primary-light': '#4CAF50', // <- lighter green
+            accent: '#f59e0b',
+            'accent-dark': '#b45309',
+            'neutral-light': '#f3f4f6',
+            neutral: '#6b7280',
+            'neutral-dark': '#374151',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+   body {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-optical-sizing: auto;
+    }
+  </style>
+</head>
+<body class="bg-neutral-light text-neutral-dark">
+
+  <!-- Header -->
+ <header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap md:flex-nowrap items-center gap-4">
+    <h1 class="text-2xl font-bold text-primary flex-shrink-0">StreetSupply</h1>
+    
+    <input
+      type="text"
+      placeholder="Search onions, tomatoes, etc..."
+      class="flex-grow min-w-[200px] max-w-full md:max-w-md border border-gray-300 rounded-md px-4 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+    />
+    
+    <button id="menuToggle" class="md:hidden text-3xl focus:outline-none flex-shrink-0">☰</button>
+
+    <nav id="menu" class="hidden md:flex md:flex-grow md:space-x-6 text-sm bg-white md:bg-transparent md:static fixed top-16 left-0 w-full md:w-auto px-6 py-4 md:p-0 shadow md:shadow-none z-40">
+      <ul id="nav-links" class="hidden md:flex md:ml-auto space-x-6 text-primary">
+        <li><a href="#" class="hover:text-neutral-dark">Home</a></li>
+        <li><a href="/cart.html" class="text-neutral-dark hover:text-primary">🛒 Cart</a></li>
+        <li><a href="/order-history-hawker.html" class="text-neutral-dark hover:text-primary">📦 Orders</a></li>
+        <li><a href="dashboard-chat.html" class="text-neutral-dark hover:text-primary">💬Chats</a></li>
+        <li><a href="./#about" class="hover:text-neutral-dark">About</a></li>
+        <li><a href="./#services" class="hover:text-neutral-dark">Services</a></li>
+        <li><a href="#contact" class="hover:text-neutral-dark">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Filters -->
+  <section class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap items-center gap-4">
+    <label class="inline-flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="form-checkbox text-emerald-600 scale-110"> <span>Pre-cut Only</span>
+    </label>
+    <label class="inline-flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="form-checkbox text-emerald-600 scale-110"> <span>Same Day Delivery</span>
+    </label>
+    <label class="inline-flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="form-checkbox text-emerald-600 scale-110"> <span>Bulk Available</span>
+    </label>
+    <select class="ml-auto border rounded px-3 py-2 text-sm">
+      <option>All Categories</option>
+      <option>Vegetables</option>
+      <option>Spices</option>
+      <option>Oils</option>
+    </select>
+  </section>
+
+  <!-- Map -->
+  <section class="max-w-7xl mx-auto px-6">
+    <div class="bg-white border border-gray-200 rounded-xl shadow mb-8 p-6 text-center h-60 flex items-center justify-center text-gray-400">
+      📍 Interactive GPS Map Loading...
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="max-w-7xl mx-auto px-6 pb-20">
+    <h2 class="text-xl font-semibold mb-4 text-primary">Nearby Vendors (within 5 km radius)</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      <!-- Example Product Card -->
+      <div class="bg-white rounded-xl shadow hover:shadow-lg p-4 transition-all">
+        <img src="https://source.unsplash.com/300x200/?tomatoes" alt="Tomatoes" class="rounded-lg mb-3">
+        <h3 class="font-semibold text-lg">Premium Tomatoes</h3>
+        <p class="text-sm text-gray-600">₹25/kg · 1.2 km</p>
+        <p class="text-xs text-emerald-600 mt-1">🥬 Pre-cut Available</p>
+        <button class="mt-3 w-full bg-accent hover:bg-accent-dark text-white py-2 rounded text-sm">Add to Cart</button>
+      </div>
+
+      <!-- Repeat more cards as needed... -->
+
+    </div>
+  </section>
+
+  <!-- Floating Place Order -->
+<!-- Spacer to prevent overlap with footer -->
+<div class="h-[72px]"></div> <!-- height = button height + margin -->
+
+<!-- Place Order Button Wrapper -->
+<div class="sticky bottom-6 z-50 flex justify-end max-w-7xl mx-auto px-6 mb-2" >
+  <a href="/cart.html" class="bg-primary-light hover:bg-primary text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg transition">
+    🛒 Place Order
+  </a>
+</div>
+
+<!-- Footer -->
+   <div id="footer-sentinel"></div>
+  <footer class="bg-primary text-white py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div class="mb-4 md:mb-0">
+        <h4 class="text-lg font-semibold">StreetSupply</h4>
+        <p class="text-sm text-gray-400">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-4 text-sm" id="contact">
+        <a href="#" class="hover:text-accent">Privacy Policy</a>
+        <a href="#" class="hover:text-accent">Contact</a>
+        <a href="#" class="hover:text-accent">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttonWrapper = document.getElementById('sticky-button-wrapper');
+    const sentinel = document.getElementById('footer-sentinel');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          buttonWrapper.classList.remove('fixed', 'bottom-6', 'right-6');
+        } else {
+          buttonWrapper.classList.add('fixed', 'bottom-6', 'right-6');
+        }
+      },
+      {
+        root: null,
+        threshold: 0,
+      }
+    );
+
+    observer.observe(sentinel);
+  });
+</script>
+
+</body>
+</html>
