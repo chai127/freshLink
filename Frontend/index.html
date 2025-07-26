@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetSupply – Raw Material Sourcing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+           primary: '#24732b',         // Darker, rich green (calm but strong)
+          'primary-dark': '#1d5a22',  // Even darker green for hover
+
+            accent: '#f59e0b',          // Warm amber/yellow accent
+            'accent-dark': '#b45309',   // Darker amber (hover)
+
+            'neutral-light': '#f3f4f6', // Light gray background
+            neutral: '#6b7280',         // Medium gray (text)
+            'neutral-dark': '#374151',  // Dark gray (headings)
+
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   body {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-optical-sizing: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-primary">StreetSupply</h1>
+
+      <!-- Hamburger Button -->
+      <button id="menuToggle" class="md:hidden text-3xl focus:outline-none">☰</button>
+
+      <!-- Navigation Links -->
+      <nav id="menu" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-sm absolute md:static bg-white top-16 left-0 w-full md:w-auto px-6 md:px-0 py-4 md:py-0 shadow md:shadow-none">
+        <a href="#about" class="hover:text-primary">About</a>
+        <a href="#features" class="hover:text-primary">Features</a>
+        <a href="#how" class="hover:text-primary">How It Works</a>
+        <a href="login.html?role=vendor&type=login" class="text-gray-700 hover:text-primary">Login</a>
+        <a href="login.html?role=vendor&type=signup" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+    <section class="relative bg-white py-20 text-center px-6">
+      <!-- Background image -->
+  <div 
+    class="absolute inset-0 bg-cover bg-center" 
+    style="background-image: url('assets/hero-image.jpg');" 
+    aria-hidden="true"></div>
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-60" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative max-w-3xl mx-auto text-white">
+        <h2 class="text-4xl sm:text-5xl font-bold mb-4">Connecting Hawkers to Fresh Raw Material Suppliers</h2>
+        <p class="text-lg mb-6">Filter by pre-cut, local vendors, same-day delivery, and negotiate pricing — all in one place.</p>
+        <div class="space-x-4">
+        <a href="login.html?role=hawker&type=signup" onclick="getRoleFromURL()" id="hawkerBtn" class="px-6 py-3 bg-primary rounded hover:bg-primary-dark">Sign Up as Hawker</a>
+        <a href="login.html?role=vendor&type=signup" onclick="getRoleFromURL()" id="vendorBtn" class="px-6 py-3 bg-accent rounded hover:bg-accent-dark">Sign Up as Vendor</a>
+        </div>
+    </div>
+    </section>
+
+
+  <!-- Feature Grid -->
+  <section id="features" class="py-16 bg-neutral-light">
+    <div class="max-w-6xl mx-auto px-6">
+      <h3 class="text-2xl font-semibold text-center mb-12 text-primary">Platform Features</h3>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg">
+          <div class="text-3xl text-primary mb-4">⏱️</div>
+          <h4 class="font-bold mb-2">Save Time with Pre-Cut Supplies</h4>
+          <p class="text-neutral">Get vegetables and ingredients ready to use, delivered faster.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg">
+          <div class="text-3xl text-accent mb-4">💬</div>
+          <h4 class="font-bold mb-2">Bargain Digitally</h4>
+          <p class="text-neutral">Negotiate pricing in-app with your nearby vendors — no phone calls needed.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg">
+          <div class="text-3xl text-primary-dark mb-4">📦</div>
+          <h4 class="font-bold mb-2">Track Your Orders</h4>
+          <p class="text-neutral">Real-time updates and order history logs to simplify repeat orders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl font-semibold mb-8 text-primary">How It Works</h3>
+      <ol class="space-y-6 text-left max-w-xl mx-auto text-neutral-dark">
+        <li><strong>1. Create an Account:</strong> Choose whether you're a hawker or vendor.</li>
+        <li><strong>2. Hawkers Search Vendors:</strong> Use filters like GPS, pre-cut, and bulk supply.</li>
+        <li><strong>3. Negotiate and Place Orders:</strong> Suggest pricing and await vendor responses.</li>
+        <li><strong>4. Track Your Orders:</strong> Get delivery updates and review past transactions.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div class="mb-4 md:mb-0">
+        <h4 class="text-lg font-semibold">StreetSupply</h4>
+        <p class="text-sm text-gray-400">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-4 text-sm">
+        <a href="#" class="hover:text-accent">Privacy Policy</a>
+        <a href="#" class="hover:text-accent">Contact</a>
+        <a href="#" class="hover:text-accent">Instagram</a>
+      </div>
+    </div>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>
