@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hawker Profile – StreetSupply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-emerald-600">StreetSupply</h1>
+      <nav class="space-x-6 text-sm">
+        <a href="/dashboard-hawker.html" class="hover:text-emerald-600">Dashboard</a>
+        <a href="/order-history-hawker.html" class="hover:text-emerald-600">Orders</a>
+        <a href="/cart.html" class="hover:text-emerald-600">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-12 bg-white mt-10 rounded-xl shadow">
+    <h2 class="text-2xl font-bold mb-6">Hawker Profile</h2>
+
+    <form class="space-y-8">
+      <div>
+        <label class="block text-sm font-medium mb-1">Full Name</label>
+        <input type="text" placeholder="e.g., Raj Kumar" class="w-full border rounded px-4 py-2" />
+      </div>
+
+      <!-- Profile Photo -->
+      <div>
+        <label class="block text-sm font-medium mb-2">Upload Your Photo</label>
+        <div class="flex items-center gap-4">
+          <input type="file" id="photo-upload" class="hidden" />
+          <label for="photo-upload" class="flex items-center gap-2 border px-4 py-2 rounded-l-lg bg-white text-sm cursor-pointer hover:bg-gray-50">
+            📸 Choose Photo
+          </label>
+          <span class="text-sm text-gray-500">JPG or PNG, square preferred</span>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Stall Location</label>
+        <input type="text" placeholder="e.g., Near Gate 2, Karol Bagh Market" class="w-full border rounded px-4 py-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Notes (Optional)</label>
+        <textarea rows="3" placeholder="Add special instructions, delivery windows..." class="w-full border rounded px-4 py-2"></textarea>
+      </div>
+
+      <button type="submit" class="bg-emerald-600 text-white px-6 py-2 rounded hover:bg-emerald-700">Save Profile</button>
+    </form>
+  </main>
+</body>
+</html>

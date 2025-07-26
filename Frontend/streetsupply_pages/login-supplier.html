@@ -1,0 +1,29 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Vendor Login</title> <script src="https://cdn.tailwindcss.com"></script> </head> <body class="bg-gray-100 flex items-center justify-center h-screen"> <div class="bg-white p-8 rounded shadow-md w-full max-w-md"> <h1 class="text-2xl font-semibold text-center text-amber-600 mb-2">Vendor Login</h1> <p class="text-sm text-gray-500 text-center mb-6">Connect and grow your business.</p>
+
+<form action="/vendor/login" method="POST">
+  <div class="mb-4">
+    <label for="email" class="block text-sm font-medium text-gray-700">Email / Mobile Number</label>
+    <input type="text" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded mt-1" required />
+  </div>
+  <div class="mb-4">
+    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+    <input type="password" id="password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded mt-1" required />
+  </div>
+  <div class="text-right mb-4">
+    <a href="/vendor/forgot-password" class="text-sm text-blue-500 hover:underline">Forgot password?</a>
+  </div>
+  <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded hover:bg-amber-600 transition">Log In</button>
+</form>
+
+<div class="flex items-center my-4">
+  <div class="flex-grow h-px bg-gray-300"></div>
+  <span class="px-2 text-sm text-gray-500">or</span>
+  <div class="flex-grow h-px bg-gray-300"></div>
+</div>
+
+<button class="w-full border border-gray-300 py-2 rounded text-gray-700 hover:bg-gray-100 mb-3">Sign in with Google</button>
+<p class="text-center text-sm">
+  New here?
+  <a href="/vendor/signup" class="text-blue-500 hover:underline">Create a Vendor Account</a>
+</p>
+</div> </body> </html>

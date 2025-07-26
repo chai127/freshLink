@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nearby Stores Map – StreetSupply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    #map { height: 600px; border-radius: 0.75rem; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-emerald-600">StreetSupply</h1>
+      <nav class="space-x-6 text-sm">
+        <a href="/dashboard-hawker.html" class="hover:text-emerald-600">Dashboard</a>
+        <a href="/cart.html" class="hover:text-emerald-600">🛒 Cart</a>
+        <a href="/order-history-hawker.html" class="hover:text-emerald-600">Orders</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Map Container -->
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <h2 class="text-2xl font-bold mb-4">Nearby Suppliers</h2>
+    <div id="map" class="shadow"></div>
+  </main>
+
+  <script>
+    // Center of map (you can use user's GPS location dynamically)
+    const map = L.map('map').setView([28.6139, 77.2090], 13); // Delhi coordinates
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Sample store data
+    const stores = [
+      {
+        name: "GreenMart Veggies",
+        coords: [28.6139, 77.2090],
+        profile: "/supplier-profile.html?id=greenmart"
+      },
+      {
+        name: "SpiceBox Co.",
+        coords: [28.6172, 77.2210],
+        profile: "/supplier-profile.html?id=spicebox"
+      },
+      {
+        name: "FreshFarm Daily",
+        coords: [28.6085, 77.2105],
+        profile: "/supplier-profile.html?id=freshfarm"
+      }
+    ];
+
+    // Add markers to the map
+    stores.forEach(store => {
+      const marker = L.marker(store.coords).addTo(map);
+      marker.bindPopup(`
+        <strong>${store.name}</strong><br/>
+        <a href="${store.profile}" class="text-emerald-600 hover:underline">View Profile</a>
+      `);
+    });
+  </script>
+</body>
+</html>

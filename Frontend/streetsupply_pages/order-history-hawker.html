@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order History – StreetSupply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navigation -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-emerald-600">StreetSupply</h1>
+      <nav class="space-x-6 text-sm">
+        <a href="/dashboard-hawker.html" class="hover:text-emerald-600">Dashboard</a>
+        <a href="/product-search.html" class="hover:text-emerald-600">Browse</a>
+        <a href="/order-history-hawker.html" class="font-semibold text-emerald-600">Orders</a>
+        <a href="/cart.html" class="hover:text-emerald-600">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Order History -->
+  <main class="max-w-6xl mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold mb-8">Your Past Orders</h2>
+
+    <!-- Order Timeline -->
+    <div class="space-y-6">
+      <!-- Order Block -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-2">
+          <div>
+            <h3 class="font-semibold text-lg">Order #1001</h3>
+            <p class="text-sm text-gray-500">Delivered on July 20, 2025</p>
+          </div>
+          <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">Delivered</span>
+        </div>
+        <ul class="text-sm text-gray-700 list-disc pl-5 mb-4">
+          <li>Pre-cut Tomatoes (3kg) — ₹180</li>
+          <li>Chopped Green Chillies (1kg) — ₹70</li>
+        </ul>
+        <div class="flex justify-between items-center text-sm text-gray-600">
+          <div>Vendor: <span class="font-medium">FreshMart Pvt Ltd</span></div>
+          <div>Total: <span class="font-semibold text-emerald-600">₹250</span></div>
+        </div>
+      </div>
+
+      <!-- Repeat Order Block -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-2">
+          <div>
+            <h3 class="font-semibold text-lg">Order #1000</h3>
+            <p class="text-sm text-gray-500">Delivered on July 14, 2025</p>
+          </div>
+          <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">Delivered</span>
+        </div>
+        <ul class="text-sm text-gray-700 list-disc pl-5 mb-4">
+          <li>Shredded Cabbage (2kg) — ₹110</li>
+          <li>Whole Onions (5kg) — ₹200</li>
+        </ul>
+        <div class="flex justify-between items-center text-sm text-gray-600">
+          <div>Vendor: <span class="font-medium">UrbanHarvest Co.</span></div>
+          <div>Total: <span class="font-semibold text-emerald-600">₹310</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Option -->
+    <div class="text-right mt-10">
+      <button class="bg-slate-700 text-white px-5 py-2 rounded hover:bg-slate-800">
+        Export as PDF
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-10 px-6 mt-16">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+      <div>
+        <h4 class="text-lg font-semibold">StreetSupply</h4>
+        <p class="text-sm text-gray-400">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-4 text-sm mt-4 md:mt-0">
+        <a href="#" class="hover:text-emerald-400">Privacy Policy</a>
+        <a href="#" class="hover:text-emerald-400">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

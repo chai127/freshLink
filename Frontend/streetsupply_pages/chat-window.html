@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat – StreetSupply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    #chat-box { max-height: 60vh; overflow-y: auto; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-emerald-600">Chat with FreshMart</h1>
+      <a href="/chat-dashboard.html" class="text-sm text-gray-500 hover:text-emerald-600">← Back</a>
+    </div>
+  </header>
+
+  <!-- Chat Window -->
+  <main class="max-w-4xl mx-auto px-6 py-6">
+    <div id="chat-box" class="bg-white p-4 rounded-lg shadow space-y-4 mb-4">
+      <!-- Message from vendor -->
+      <div class="flex items-start gap-2">
+        <div class="bg-gray-100 text-sm px-4 py-2 rounded-lg max-w-xs">Hi, fresh tomatoes are ₹24/kg today. Pre-cut extra ₹2/kg.</div>
+      </div>
+
+      <!-- Message from user -->
+      <div class="flex items-end justify-end gap-2">
+        <div class="bg-emerald-600 text-white text-sm px-4 py-2 rounded-lg max-w-xs">Can you do ₹22 if I take 20kg?</div>
+      </div>
+
+      <!-- Message from vendor -->
+      <div class="flex items-start gap-2">
+        <div class="bg-gray-100 text-sm px-4 py-2 rounded-lg max-w-xs">Okay, deal. Delivery by 4 PM.</div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <form class="flex gap-2">
+      <input type="text" placeholder="Type a message…" class="flex-1 border px-4 py-2 rounded-full text-sm" />
+      <button type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm hover:bg-emerald-700">Send</button>
+    </form>
+  </main>
+</body>
+</html>
