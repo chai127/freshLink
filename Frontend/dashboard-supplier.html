@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supplier Dashboard – StreetSupply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+ <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config (Custom Colors) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#24732b',
+            'primary-dark': '#1d5a22',
+             'primary-light': '#4CAF50', // <- lighter green
+            accent: '#f59e0b',
+            'accent-dark': '#b45309',
+            'neutral-light': '#f3f4f6',
+            neutral: '#6b7280',
+            'neutral-dark': '#374151',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+   body {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-optical-sizing: auto;
+    }
+  </style>
+</head>
+<body  class="bg-neutral-light text-neutral-dark flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-primary">StreetSupply</h1>
+      <nav class="space-x-6 text-sm text-primary">
+        <a href="#" class="hover:text-accent transition">Dashboard</a>
+        <a href="requests-supplier.html" class="hover:text-accent transition">🛒 Requests</a>
+        <a href="order-history-supplier.html" class="hover:text-accent transition">Orders</a>
+        <a href="profile-supplier.html">Profile</a>
+      </nav>
+    </div>
+  </header>
+<div id="page-content" class="flex-grow">
+
+
+
+<main class="flex-grow max-w-6xl mx-auto px-6 py-10 space-y-12">
+
+  <!-- Incoming Requests -->
+  <section>
+    <h2 class="text-2xl font-bold mb-6 text-primary">Incoming Requests</h2>
+
+    <div class="space-y-4">
+      <!-- Request Card -->
+      <div class="bg-white shadow rounded-lg p-5">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-semibold text-lg text-neutral-dark">
+            Red Onions 
+            <span class="text-sm bg-accent/10 text-accent px-2 py-1 rounded ml-2">Pending</span>
+          </h3>
+          <span class="text-xs text-red-600">2h 45m left</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-sm gap-2 mb-4 text-neutral">
+          <p><strong>Quantity:</strong> 20 kg</p>
+          <p><strong>Suggested Price:</strong> ₹18/kg</p>
+          <p><strong>Hawker:</strong> Raj Kumar – Connaught Place</p>
+        </div>
+        <div class="flex gap-4">
+          <button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark">✔ Accept</button>
+          <button class="bg-neutral-light text-neutral-dark px-4 py-2 rounded hover:bg-neutral">✖ Decline</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upload Product Section -->
+  <section id="upload-section" class="bg-white p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-bold mb-4 text-primary">Upload New Product</h2>
+
+    <form class="space-y-6">
+      <div>
+        <label class="block text-sm font-medium mb-1 text-neutral-dark">Product Name</label>
+        <input type="text" placeholder="e.g., Fresh Tomatoes" class="w-full border border-neutral-light rounded px-4 py-2" />
+      </div>
+
+   <div>
+  <label class="block text-sm font-medium mb-1 text-neutral-dark">Category</label>
+   <select class="w-full border border-neutral-light rounded px-4 py-2 
+                 hover:border-primary focus:border-primary 
+                 hover:bg-primary-light/10 focus:bg-primary-light/10 
+                 focus:outline-none transition">
+    <option value="">Select a Category</option>
+    <option>Vegetables</option>
+    <option>Spices</option>
+    <option>Oils</option>
+    <option>Fruits</option>
+  </select>
+</div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1 text-neutral-dark">Price per Unit</label>
+        <input type="text" placeholder="e.g., ₹25/kg" class="w-full border border-neutral-light rounded px-4 py-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1 text-neutral-dark">Available Quantity</label>
+        <input type="text" placeholder="e.g., 50 kg" class="w-full border border-neutral-light rounded px-4 py-2" />
+      </div>
+
+      <!-- Product Image Upload -->
+      <div>
+        <label class="block text-sm font-medium mb-2 text-neutral-dark">Upload Product Image</label>
+        <div class="border-dashed border-2 border-neutral-light rounded-lg p-6 text-center bg-neutral-light hover:bg-white cursor-pointer">
+          <input type="file" id="product-photo" class="hidden" />
+          <label for="product-photo" class="text-sm text-neutral cursor-pointer">📸 Click to upload product image</label>
+        </div>
+      </div>
+
+      <!-- Feature Flags -->
+      <div class="grid sm:grid-cols-3 gap-4 text-sm text-neutral-dark">
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-primary mr-2"> Pre-cut Available
+        </label>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-primary mr-2"> Bulk Supply
+        </label>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-primary mr-2"> Same Day Delivery
+        </label>
+      </div>
+
+      <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-primary-dark">
+        Upload Product
+      </button>
+    </form>
+  </section>
+</main>
+
+
+</div>
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div class="mb-4 md:mb-0">
+        <h4 class="text-lg font-semibold">StreetSupply</h4>
+        <p class="text-sm text-gray-400">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-4 text-sm" id="contact">
+        <a href="#" class="hover:text-accent">Privacy Policy</a>
+        <a href="#" class="hover:text-accent">Contact</a>
+        <a href="#" class="hover:text-accent">Instagram</a>
+      </div>
+    </div>
+  </footer>
+<script src="script.js"></script>
+
+<script>
+  // Upload image preview
+document.addEventListener("DOMContentLoaded", () => {
+
+  const fileInput = document.getElementById("product-photo");
+
+  if (fileInput) {
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file && file.type.startsWith("image/")) {
+        alert(`Selected image: ${file.name}`);
+        // You can display preview or store the file
+      } else {
+        alert("Please select a valid image file.");
+        e.target.value = "";
+      }
+    });
+  }
+
+  // Accept / Decline buttons
+  document.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const text = e.target.textContent.trim();
+      if (text.includes("✔")) {
+        console.log("Request accepted.");
+      } else if (text.includes("✖")) {
+        console.log("Request declined.");
+      }
+    });
+  });
+
+  // Optional: form submission (mocked)
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // prevent real submission
+      alert("Product uploaded successfully!");
+      form.reset();
+    });
+  }
+});
+
+  </script>
+</body>
+</html>

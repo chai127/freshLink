@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supplier Profile – StreetSupply</title>
+
+  <!-- Tailwind CSS + Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Config (Custom Colors) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#24732b',
+            'primary-dark': '#1d5a22',
+            'primary-light': '#4CAF50',
+            accent: '#f59e0b',
+            'accent-dark': '#b45309',
+            'neutral-light': '#f3f4f6',
+            neutral: '#6b7280',
+            'neutral-dark': '#374151',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-optical-sizing: auto;
+      background-color: #f3f4f6; /* Neutral light */
+    }
+    /* Smooth input focus */
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #24732b;
+      box-shadow: 0 0 0 3px rgba(36, 115, 43, 0.3);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    /* Scrollbar for certificates preview */
+    #certificates-preview, #saved-certificates {
+      scrollbar-width: thin;
+      scrollbar-color: #24732b #f3f4f6;
+    }
+    #certificates-preview::-webkit-scrollbar, #saved-certificates::-webkit-scrollbar {
+      height: 8px;
+    }
+    #certificates-preview::-webkit-scrollbar-thumb, #saved-certificates::-webkit-scrollbar-thumb {
+      background-color: #24732b;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen text-neutral-dark">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold text-primary tracking-wide">StreetSupply</h1>
+      <nav class="space-x-8 text-sm font-semibold text-primary">
+        <a href="dashboard-supplier.html" class="hover:text-accent transition duration-300 ease-in-out">Dashboard</a>
+        <a href="requests-supplier.html" class="hover:text-accent transition duration-300 ease-in-out">🛒 Requests</a>
+        <a href="order-history-supplier.html" class="hover:text-accent transition duration-300 ease-in-out">Orders</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-6xl mx-auto p-8 w-full">
+    <section class="bg-white rounded-2xl shadow-xl p-10">
+      <h1 class="text-4xl font-extrabold text-primary mb-10 border-b border-primary-light pb-4">Supplier Profile</h1>
+      
+      <!-- Banner Upload & Preview -->
+      <div class="mb-12 flex flex-col items-center relative max-w-4xl mx-auto">
+        <label for="banner-photo" 
+               class="cursor-pointer rounded-xl overflow-hidden shadow-lg border-4 border-primary w-full hover:brightness-90 transition duration-300 relative">
+          <img id="banner-photo-preview" 
+               src="https://via.placeholder.com/900x200?text=Upload+Banner" 
+               alt="Banner Photo" 
+               class="w-full h-52 object-cover rounded-xl" />
+          <div class="absolute bottom-4 right-4 bg-primary text-white rounded-full p-3 shadow-lg hover:bg-primary-dark transition text-2xl select-none">
+            🖼️
+          </div>
+        </label>
+        <input type="file" id="banner-photo" accept="image/*" class="hidden" />
+        <p class="mt-3 text-sm text-neutral font-medium select-none">Click banner to upload/update</p>
+      </div>
+
+      <!-- Profile Photo Upload & Preview -->
+      <div class="mb-12 flex flex-col items-center relative max-w-xs mx-auto">
+        <label for="supplier-photo" class="cursor-pointer relative group">
+          <img id="supplier-photo-preview" 
+               src="https://via.placeholder.com/150" 
+               alt="Supplier Photo" 
+               class="rounded-full w-40 h-40 object-cover border-4 border-primary shadow-lg transition-transform duration-300 group-hover:scale-105" />
+          <div class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-3 shadow-lg hover:bg-primary-dark transition text-2xl select-none">
+            📸
+          </div>
+        </label>
+        <input type="file" id="supplier-photo" accept="image/*" class="hidden" />
+        <p class="mt-3 text-sm text-neutral font-medium select-none">Click photo to upload/update</p>
+      </div>
+
+      <!-- Certificates Upload -->
+      <div class="mb-14 max-w-xl mx-auto">
+        <label for="certificates" class="block font-semibold mb-3 text-neutral-dark cursor-pointer text-lg">Upload Certificates</label>
+        <input type="file" id="certificates" accept="image/*,.pdf" multiple class="border border-neutral-light rounded-lg p-3 w-full hover:border-primary transition duration-300" />
+        <p class="mt-1 text-sm text-neutral">You can upload multiple image or PDF certificates.</p>
+
+        <!-- Certificates Preview -->
+        <div id="certificates-preview" class="mt-6 flex flex-wrap gap-5 overflow-x-auto"></div>
+      </div>
+
+      <!-- Supplier Details Form -->
+      <form class="space-y-8 max-w-xl mx-auto" id="supplier-form">
+        <div>
+          <label for="company-name" class="block font-semibold mb-2 text-neutral-dark text-lg">Company Name</label>
+          <input id="company-name" type="text" required placeholder="Supplier Company" class="w-full border border-neutral-light rounded-lg px-5 py-3 text-neutral-dark text-base" />
+        </div>
+
+        <div>
+          <label for="contact-person" class="block font-semibold mb-2 text-neutral-dark text-lg">Contact Person</label>
+          <input id="contact-person" type="text" required placeholder="Name" class="w-full border border-neutral-light rounded-lg px-5 py-3 text-neutral-dark text-base" />
+        </div>
+
+        <div>
+          <label for="email" class="block font-semibold mb-2 text-neutral-dark text-lg">Email</label>
+          <input id="email" type="email" required placeholder="example@mail.com" class="w-full border border-neutral-light rounded-lg px-5 py-3 text-neutral-dark text-base" />
+        </div>
+
+        <div>
+          <label for="phone" class="block font-semibold mb-2 text-neutral-dark text-lg">Phone Number</label>
+          <input id="phone" type="tel" placeholder="+91 98765 43210" class="w-full border border-neutral-light rounded-lg px-5 py-3 text-neutral-dark text-base" />
+        </div>
+
+        <div>
+          <label for="address" class="block font-semibold mb-2 text-neutral-dark text-lg">Address</label>
+          <textarea id="address" rows="4" placeholder="Company Address" class="w-full border border-neutral-light rounded-lg px-5 py-3 resize-none text-neutral-dark text-base"></textarea>
+        </div>
+
+        <button type="submit" 
+                class="bg-primary text-white font-bold px-8 py-3 rounded-full hover:bg-primary-dark transition duration-300 w-full text-lg shadow-md hover:shadow-lg">
+          Save Profile
+        </button>
+      </form>
+
+      <!-- Display saved info here -->
+      <section class="mt-14 max-w-4xl mx-auto" id="saved-info" hidden>
+        <h2 class="text-2xl font-extrabold text-primary mb-8 border-b border-primary-light pb-3">Saved Profile Info</h2>
+
+        <!-- Banner -->
+        <div class="mb-8 rounded-xl overflow-hidden border-2 border-primary shadow-sm">
+          <img id="saved-banner" src="" alt="Saved Banner" class="w-full h-52 object-cover" />
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center space-y-6 sm:space-y-0 sm:space-x-10 mb-10">
+          <img id="saved-photo" src="" alt="Supplier Photo" class="w-28 h-28 rounded-full object-cover border-4 border-primary shadow" />
+          <div class="text-lg space-y-2 text-neutral-dark max-w-xl">
+            <p><span class="font-semibold">Company:</span> <span id="saved-company"></span></p>
+            <p><span class="font-semibold">Contact:</span> <span id="saved-contact"></span></p>
+            <p><span class="font-semibold">Email:</span> <span id="saved-email"></span></p>
+            <p><span class="font-semibold">Phone:</span> <span id="saved-phone"></span></p>
+            <p><span class="font-semibold">Address:</span> <span id="saved-address" class="block max-w-md"></span></p>
+          </div>
+        </div>
+
+        <!-- Certificates -->
+        <div>
+          <h3 class="font-extrabold text-primary mb-4 text-xl">Certificates</h3>
+          <div id="saved-certificates" class="flex flex-wrap gap-5 overflow-x-auto"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="bg-primary text-white py-10 px-6 mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+      <div>
+        <h4 class="text-lg font-semibold tracking-wide">StreetSupply</h4>
+        <p class="text-sm text-gray-300">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-6 text-sm font-semibold">
+        <a href="#" class="hover:text-accent transition duration-300">Privacy Policy</a>
+        <a href="#" class="hover:text-accent transition duration-300">Contact</a>
+        <a href="#" class="hover:text-accent transition duration-300">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Banner preview
+    const bannerInput = document.getElementById('banner-photo');
+    const bannerPreview = document.getElementById('banner-photo-preview');
+    bannerInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if(file && file.type.startsWith('image/')){
+        const reader = new FileReader();
+        reader.onload = () => bannerPreview.src = reader.result;
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please select a valid image file for banner.');
+        e.target.value = '';
+      }
+    });
+
+    // Profile photo preview
+    const photoInput = document.getElementById('supplier-photo');
+    const photoPreview = document.getElementById('supplier-photo-preview');
+    photoInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = () => photoPreview.src = reader.result;
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please select a valid image file for photo.');
+        e.target.value = '';
+      }
+    });
+
+    // Certificates preview
+    const certificatesInput = document.getElementById('certificates');
+    const certificatesPreview = document.getElementById('certificates-preview');
+    let certificatesFiles = [];
+
+    certificatesInput.addEventListener('change', e => {
+      certificatesFiles = Array.from(e.target.files);
+      certificatesPreview.innerHTML = '';
+
+      certificatesFiles.forEach((file) => {
+        const container = document.createElement('div');
+        container.className = "w-28 h-28 border-2 border-primary rounded-xl overflow-hidden relative flex items-center justify-center bg-white shadow-sm";
+
+        if (file.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.className = 'object-cover w-full h-full';
+          const reader = new FileReader();
+          reader.onload = () => img.src = reader.result;
+          reader.readAsDataURL(file);
+          container.appendChild(img);
+        } else if (file.type === "application/pdf") {
+          container.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            <span class="absolute bottom-2 text-xs text-center w-full text-primary font-semibold">PDF</span>
+          `;
+        } else {
+          container.textContent = "File";
+        }
+
+        certificatesPreview.appendChild(container);
+      });
+    });
+
+    // Save & Display profile info
+    const form = document.getElementById('supplier-form');
+    const savedSection = document.getElementById('saved-info');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const company = form['company-name'].value.trim();
+      const contact = form['contact-person'].value.trim();
+      const email = form['email'].value.trim();
+      const phone = form['phone'].value.trim();
+      const address = form['address'].value.trim();
+
+      const photoSrc = photoPreview.src;
+      const bannerSrc = bannerPreview.src;
+
+      // Show saved info section
+      savedSection.hidden = false;
+      document.getElementById('saved-company').textContent = company;
+      document.getElementById('saved-contact').textContent = contact;
+      document.getElementById('saved-email').textContent = email;
+      document.getElementById('saved-phone').textContent = phone || '-';
+      document.getElementById('saved-address').textContent = address || '-';
+      document.getElementById('saved-photo').src = photoSrc;
+      document.getElementById('saved-banner').src = bannerSrc;
+
+      // Certificates saved display
+      const savedCertificatesDiv = document.getElementById('saved-certificates');
+      savedCertificatesDiv.innerHTML = '';
+      certificatesFiles.forEach(file => {
+        const container = document.createElement('div');
+        container.className = "w-28 h-28 border-2 border-primary rounded-xl overflow-hidden relative flex items-center justify-center bg-white shadow-sm";
+
+        if (file.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.className = 'object-cover w-full h-full';
+          const reader = new FileReader();
+          reader.onload = () => img.src = reader.result;
+          reader.readAsDataURL(file);
+          container.appendChild(img);
+        } else if (file.type === "application/pdf") {
+          container.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            <span class="absolute bottom-2 text-xs text-center w-full text-primary font-semibold">PDF</span>
+          `;
+        } else {
+          container.textContent = "File";
+        }
+        savedCertificatesDiv.appendChild(container);
+      });
+
+      alert('Profile saved!');
+
+      // Reset form & previews
+      form.reset();
+      photoPreview.src = 'https://via.placeholder.com/150';
+      bannerPreview.src = 'https://via.placeholder.com/900x200?text=Upload+Banner';
+      certificatesPreview.innerHTML = '';
+      certificatesFiles = [];
+      certificatesInput.value = '';
+    });
+  </script>
+</body>
+</html>

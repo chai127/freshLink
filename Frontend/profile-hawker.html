@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hawker Profile – StreetSupply</title>
+
+  <!-- Tailwind CSS + Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Config (Custom Colors) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#24732b',
+            'primary-dark': '#1d5a22',
+            'primary-light': '#4CAF50',
+            accent: '#f59e0b',
+            'accent-dark': '#b45309',
+            'neutral-light': '#f3f4f6',
+            neutral: '#6b7280',
+            'neutral-dark': '#374151',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+   body {
+     font-family: "Montserrat", sans-serif;
+     font-weight: 500;
+     font-optical-sizing: auto;
+   }
+  </style>
+</head>
+<body class="bg-neutral-light text-neutral-dark flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-primary">StreetSupply</h1>
+      <nav class="space-x-6 text-sm text-primary">
+        <a href="#" class="hover:text-accent transition">Dashboard</a>
+        <a href="requests-supplier.html" class="hover:text-accent transition">🛒 Requests</a>
+        <a href="order-history-supplier.html" class="hover:text-accent transition">Orders</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="page-content" class="flex-grow flex flex-col items-center p-6">
+
+    <main class="bg-white rounded-xl shadow max-w-4xl w-full p-8">
+      <h1 class="text-3xl font-bold text-primary mb-6">Hawker Profile</h1>
+      
+      <!-- Hawker Photo Upload & Preview -->
+      <div class="mb-8 flex flex-col items-center">
+        <label for="hawker-photo" class="cursor-pointer relative">
+          <img id="hawker-photo-preview" src="https://via.placeholder.com/150" alt="Hawker Photo" class="rounded-full w-36 h-36 object-cover border-4 border-primary" />
+          <div class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-2 shadow-lg hover:bg-primary-dark transition">
+            📸
+          </div>
+        </label>
+        <input type="file" id="hawker-photo" accept="image/*" class="hidden" />
+        <p class="mt-2 text-sm text-neutral-dark">Click photo to upload/update</p>
+      </div>
+
+      <!-- Hawker Details Form -->
+      <form class="space-y-6 max-w-xl mx-auto" id="hawker-form">
+        <div>
+          <label for="hawker-name" class="block font-semibold mb-1 text-neutral-dark">Name</label>
+          <input id="hawker-name" type="text" required placeholder="Your Name" class="w-full border border-neutral-light rounded px-4 py-2" />
+        </div>
+
+        <div>
+          <label for="market" class="block font-semibold mb-1 text-neutral-dark">Market / Location</label>
+          <input id="market" type="text" required placeholder="e.g., Connaught Place" class="w-full border border-neutral-light rounded px-4 py-2" />
+        </div>
+
+        <div>
+          <label for="email" class="block font-semibold mb-1 text-neutral-dark">Email</label>
+          <input id="email" type="email" required placeholder="example@mail.com" class="w-full border border-neutral-light rounded px-4 py-2" />
+        </div>
+
+        <div>
+          <label for="phone" class="block font-semibold mb-1 text-neutral-dark">Phone Number</label>
+          <input id="phone" type="tel" placeholder="+91 98765 43210" class="w-full border border-neutral-light rounded px-4 py-2" />
+        </div>
+
+        <div>
+          <label for="bio" class="block font-semibold mb-1 text-neutral-dark">Bio / Description</label>
+          <textarea id="bio" rows="3" placeholder="Tell something about yourself" class="w-full border border-neutral-light rounded px-4 py-2 resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-primary-dark w-full">Save Profile</button>
+      </form>
+
+      <!-- Display saved info here -->
+      <section class="mt-10 max-w-xl mx-auto" id="saved-info" hidden>
+        <h2 class="text-xl font-semibold text-primary mb-4">Saved Profile Info</h2>
+        <div class="flex items-center space-x-4 mb-4">
+          <img id="saved-photo" src="" alt="Hawker Photo" class="w-24 h-24 rounded-full object-cover border-2 border-primary" />
+          <div>
+            <p><strong>Name:</strong> <span id="saved-name"></span></p>
+            <p><strong>Market:</strong> <span id="saved-market"></span></p>
+            <p><strong>Email:</strong> <span id="saved-email"></span></p>
+            <p><strong>Phone:</strong> <span id="saved-phone"></span></p>
+            <p><strong>Bio:</strong> <span id="saved-bio" class="block max-w-md"></span></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-10 px-6 mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div class="mb-4 md:mb-0">
+        <h4 class="text-lg font-semibold">StreetSupply</h4>
+        <p class="text-sm text-gray-400">© 2025. All rights reserved.</p>
+      </div>
+      <div class="space-x-4 text-sm" id="contact">
+        <a href="#" class="hover:text-accent">Privacy Policy</a>
+        <a href="#" class="hover:text-accent">Contact</a>
+        <a href="#" class="hover:text-accent">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Photo preview
+    const photoInput = document.getElementById('hawker-photo');
+    const photoPreview = document.getElementById('hawker-photo-preview');
+
+    photoInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = () => photoPreview.src = reader.result;
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please select a valid image file.');
+        e.target.value = '';
+      }
+    });
+
+    // Save & Display profile info
+    const form = document.getElementById('hawker-form');
+    const savedSection = document.getElementById('saved-info');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = form['hawker-name'].value.trim();
+      const market = form['market'].value.trim();
+      const email = form['email'].value.trim();
+      const phone = form['phone'].value.trim();
+      const bio = form['bio'].value.trim();
+      const photoSrc = photoPreview.src;
+
+      // Show saved info section
+      savedSection.hidden = false;
+      document.getElementById('saved-name').textContent = name;
+      document.getElementById('saved-market').textContent = market;
+      document.getElementById('saved-email').textContent = email;
+      document.getElementById('saved-phone').textContent = phone || '-';
+      document.getElementById('saved-bio').textContent = bio || '-';
+      document.getElementById('saved-photo').src = photoSrc;
+
+      alert('Profile saved!');
+      form.reset();
+      photoPreview.src = 'https://via.placeholder.com/150'; // reset preview
+    });
+  </script>
+</body>
+</html>

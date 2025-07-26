@@ -202,6 +202,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchProducts();
   }
+
+
+
+
+    function showAlert(message, type = "info") {
+    // Remove existing alert if present
+    const existingAlert = document.getElementById("custom-alert");
+    if (existingAlert) existingAlert.remove();
+
+    // Define colors based on type
+    const alertColors = {
+      success: {
+        bg: "bg-green-100",
+        text: "text-green-800",
+        border: "border-green-400",
+      },
+      warning: {
+        bg: "bg-yellow-100",
+        text: "text-yellow-800",
+        border: "border-yellow-400",
+      },
+      error: {
+        bg: "bg-red-100",
+        text: "text-red-800",
+        border: "border-red-400",
+      },
+      info: {
+        bg: "bg-blue-100",
+        text: "text-blue-800",
+        border: "border-blue-400",
+      },
+    };
+
+    const colors = alertColors[type] || alertColors.info;
+
+    // Create alert container div
+    const alertDiv = document.createElement("div");
+    alertDiv.id = "custom-alert";
+    alertDiv.className = `${colors.bg} ${colors.text} border-l-4 ${colors.border} px-6 py-4 text-sm flex justify-between items-center fixed top-16 left-0 right-0 max-w-5xl mx-auto z-50 rounded shadow`;
+
+    alertDiv.innerHTML = `
+      <span>${message}</span>
+      <button aria-label="Close alert" class="ml-4 text-xl font-bold hover:text-opacity-70 transition">&times;</button>
+    `;
+
+    // Close button event
+    alertDiv.querySelector("button").addEventListener("click", () => {
+      alertDiv.remove();
+    });
+
+    // Insert alert just below the header (assuming header is first child)
+    const header = document.querySelector("header");
+    if (header) {
+      header.insertAdjacentElement("afterend", alertDiv);
+    } else {
+      // fallback: insert at body start
+      document.body.insertAdjacentElement("afterbegin", alertDiv);
+    }
+  }
+
+  // Example usage:
+  // showAlert("Your profile is incomplete. Please complete your profile.", "warning");
+
 });
+
+
 
 
