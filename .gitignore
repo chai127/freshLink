@@ -1,0 +1,67 @@
+# === FRONTEND (Vanilla JS) ===
+# Node modules (if you're using any npm packages)
+node_modules/
+# Build output
+dist/
+build/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Environment files
+.env
+
+# === BACKEND (.NET) ===
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files.
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## ASP.NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Visual Studio Code
+.vscode/
+
+## Rider
+.idea/
+
+## NuGet packages
+*.nupkg
+packages/
+# (If using package restore)
+*.snupkg
+
+## Environment files
+*.env
+
+# === DATABASE (MSSQL) ===
+*.mdf
+*.ldf
+*.bak
+*.sqlproj.user
+*.dbmdl
+
+# === DATABASE (MySQL) ===
+# MySQL typically doesn't create local files for the DB itself in your project.
+# Ignore any exported dumps or local config
+*.sql
+*.dump
+*.cnf
+mysql-data/          # If you have local Docker MySQL volume or similar
+
+# === IDEs ===
+.vscode/             # VS Code settings
+.idea/               # JetBrains Rider / WebStorm settings
+
+# === OS / Misc ===
+.DS_Store            # macOS
+Thumbs.db            # Windows
+ehthumbs.db
+desktop.ini
